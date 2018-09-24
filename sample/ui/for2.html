@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Ractive.jsの導入</title>
+  </head>
+  <body>
+    <div id="container"></div>
+    <script id="template" type="text/ractive">
+      <h1>ユーザー一覧</h1>
+      {{#users}}
+      <p>{{name}}({{age}}才)</p>
+      {{/}}
+    </script>
+
+    <script src="ractive.js"></script>
+    <script src="app2_2.js"></script>
+  </body>
+</html>

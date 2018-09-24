@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>条件分岐</title>
+  </head>
+  <body>
+    <div id="container"></div>
+    <script id="template" type="text/ractive">
+      <h1>商品一覧</h1>
+      <ul>
+        <li>ラーメン</li>
+        <li>ギョウザ</li>
+        {{#if age >= 20}}
+        <li>ビール</li>
+        {{else}}
+        <li>オレンジジュース</li>
+        {{/if}}
+      </ul>
+    </script>
+    <script src="ractive.js"></script>
+    <script src="app3.js"></script>
+  </body>
+</html>

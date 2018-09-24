@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>税込価格を表示するプログラム</title>
+  </head>
+  <body>
+
+    <script>
+// 関数を定義する      
+var calc = function(price) {
+  return Math.floor(price * 1.08);
+};
+// calc()関数を使ってみる
+console.log('100円の商品の税込価格は' + calc(100) + '円だよ');
+console.log('299円の商品の税込価格は' + calc(299) + '円だよ');
+// calc2にもcalcと同じ関数を入れる
+var calc2 = calc;
+// calc2にも関数が入っているので、呼べる
+console.log('1152円の商品の税込価格は' + calc2(1152) + '円だよ'); 
+    </script>
+  </body>
+</html>
