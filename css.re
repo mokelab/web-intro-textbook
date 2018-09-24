@@ -38,11 +38,89 @@ h1 {
  
 //}
 
+== HTML文書にCSSを適用する
 
+HTML文書にCSSを適用するには、次の3つの方法があります。
+
+ * style要素で記述する
+ * link要素でcssファイルを読み込む
+ * style属性の値で記述する
+
+複数の文書で共通のCSSを使用することが多いため、通常はlink要素でcssファイルを読み込む方法を使います。
+
+=== style要素で記述する
+
+head要素の子にstyle要素を置き、その中にCSSを記述することでスタイルを適用することができます。@<list>{style-elem}はh1要素の色を赤に、h2要素の色を青に指定した例です。
+
+//list[style-elem][style要素で記述する]{
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+    h1 {
+      color: red;
+    }
+    h2 {
+      color: blue;
+    }
+    </style>
+  </head>
+  <body>
+    <h1>見出し1</h1>
+    <h2>見出し2</h2>
+  </body>
+</html>
+//}
+
+=== link要素でcssファイルを読み込む
+
+link要素を用いるとCSSファイルを読み込むことができます。
+
+まず、style.cssファイルを作成します。ファイルの内容は@<list>{css-file}のようにCSSを記述します。
+
+//list[css-file][CSSファイル]{
+h1 {
+  color: red;
+}
+h2 {
+  color: blue;
+}
+//}
+
+次に、@<list>{link-css}のようにlink要素で読み込むCSSファイルを指定します。ファイル名はhref属性で指定します。
+
+//list[link-css][link要素で読み込む]{
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <body>
+    <h1>見出し1</h1>
+    <h2>見出し2</h2>
+  </body>
+</html>
+//}
+
+=== style属性の値で記述する
+
+要素に対しstyle属性でスタイルを指定することもできます。属性値には宣言のみを記述します。
+
+//list[style-attr][style属性で指定する]{
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+    <h1 style="color:red; font-size: 36px;">見出し1</h1>
+    <h2>見出し2</h2>
+  </body>
+</html>
+//}
 
 == セレクタの種類
 
-セレクタにはいくつか種類があります。
+セレクタにはいくつか種類があります。ここでは代表的なセレクタを紹介します。
 
 === 要素セレクタ
 
@@ -74,3 +152,6 @@ HTMLの要素にはclass属性で任意のクラス名を付与することが�
 }
 //}
 
+== この章のまとめ
+
+本章ではCSSの仕組みと使い方を紹介しました。ここで紹介したプロパティ以外にも多くのプロパティがCSSでは定義されています。より高度なデザインができるよう、自分で調べて使ってみましょう。
