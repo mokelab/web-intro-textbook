@@ -10,17 +10,23 @@ JavaScriptとはプログラミング言語の1つです。言語名にJavaが�
 
 == Chrome Dev tool
 
-各ブラウザにはWebアプリ開発のためのツールが用意されています。まずはこのツールを用いてJavaScriptを実行してみましょう。
+各ブラウザにはWebアプリ開発のためのツールが用意されています。まずはこのツールを用いてJavaScriptを実行してみましょう。Chomeの場合は@<chapref>{tools}で説明したDev toolsを使用します。
 
-Google Chromeの場合は、開発対象のHTMLを表示した状態で右上の3点メニューから「その他のツール」→「デベロッパーツール」を選びます。すると、図xxのようにウィンドウが分割され、開発用ツールが表示されます。
+Dev toolsを起動したら、「Console」タブを選択しましょう（コンソールと呼びます）。コンソールを表示すると@<img>{console}のような画面が表示されます。ここではJavaScriptの文を記述し、すぐ実行することができます。
 
-開発ツールが表示されたら、「Console」タブを選択しましょう（コンソールと呼びます）。ここではJavaScriptの文を記述し、すぐ実行することができます。練習として、@<code>{console.log('Hello world');}を実行してみましょう。実行すると、図xxのように「Hello world」が表示されます。@<code>{console.log()}とはこのコンソールに文字列を表示する命令です。Javaをすでに学んでいる方であれば、@<code>{System.out.println()}みたいな命令という認識で大丈夫です。
+//image[console][JavaScriptコンソール]{
+//}
+
+練習として、@<code>{console.log('Hello world');}を実行してみましょう。実行するにはJavaScriptの文を入力した後にEnterキーを押します。実行すると、@<img>{helloworld}のように「Hello world」が表示されます。@<code>{console.log()}とはこのコンソールに文字列を表示する命令です。Javaをすでに学んでいる方であれば、@<code>{System.out.println()}のような命令という認識で大丈夫です。
+
+//image[helloworld][Hello worldが表示された]{
+//}
 
 == HTML文書内でJavaScriptを記述する
 
-CSSでは@<code>{<style>}要素を用いてHTML文書内にCSSを記述することができました。JavaScriptも同様にHTML文書内に記述することができます。
+CSSでは@<code>{style}要素を用いてHTML文書内にCSSを記述することができました。JavaScriptも同様にHTML文書内に記述することができます。
 
-HTML文書内でJavaScriptを記述し実行するには、@<code>{<script>}要素を使用します。
+HTML文書内でJavaScriptを記述し実行するには、@<code>{script}要素を使用します。
 
 //list[html-js][script要素でJavaScriptを記述する]{
 <!DOCTYPE html>
@@ -38,7 +44,7 @@ HTML文書内でJavaScriptを記述し実行するには、@<code>{<script>}要�
 </html>
 //}
 
-@<code>{<script>}要素は@<list>{html-js2}のように複数記述することができます。この場合、JavaScriptは上から順に実行されます。
+@<code>{script}要素は@<list>{html-js2}のように複数記述することができます。この場合、JavaScriptは上から順に実行されます。@<list>{html-js2}をブラウザで表示し、Dev toolsのコンソールを表示したものが@<img>{js1}です。
 
 //list[html-js2][script要素を複数記述した例]{
 <!DOCTYPE html>
@@ -55,6 +61,9 @@ HTML文書内でJavaScriptを記述し実行するには、@<code>{<script>}要�
     </script>
   </body>
 </html>
+//}
+
+//image[js1][JavaScriptは上から順に実行される]{
 //}
 
 == 外部jsファイルを読み込む
@@ -82,7 +91,10 @@ console.log('Hello world');
 </html>
 //}
 
-もしファイル名が間違っていた場合は図xxのようにコンソールにエラーが表示されます。「あれ、実行されないな？」というときはコンソールを見るようにしましょう。
+もしファイル名が間違っていた場合は@<img>{error}のようにコンソールにエラーが表示されます。「あれ、実行されないな？」というときはコンソールを見るようにしましょう。
+
+//image[error][存在しないjsファイルを読もうとした]{
+//}
 
 == 変数と定数
 
@@ -118,11 +130,14 @@ name = 'moke';
 name = 'Hirokazu Fukami';
 //}
 
-@<code>{var}の代わりに@<code>{const}を使用すると、一度だけ値を代入可能な定数を作ることができます。定数に対し後から別の値を代入しようとすると図xxのようにエラーとなります。
+@<code>{var}の代わりに、@<list>{const}のように@<code>{const}を使用すると、一度だけ値を代入可能な定数を作ることができます。定数に対し後から別の値を代入しようとすると、@<img>{const}のようにエラーとなります。
 
-//emlist[定数を作る]{
+//list[const][定数を作る]{
 const name = 'fkm';
 name = 'moke'; // エラー　定数には後から代入できない
+//}
+
+//image[const][定数に別の値を入れようとした]{
 //}
 
 JavaScriptでは変数や定数に型名を書くことができません。そのため@<list>{var-type}のように文字列が入っている変数に対し、後から数値を代入することもできます。
@@ -198,9 +213,23 @@ var a = {
 console.log(a.name); // fkmが表示される
 //}
 
+1つのオブジェクトには複数のデータを含めることができることから、JavaScriptでは複数パラメータをまとめて渡す方法としてオブジェクトが用いられることがとても多いです。@<list>{obj-param}は@<code>{initializeApp}の引数としてオブジェクトを渡しています。
+
+//list[obj-param][オブジェクトで複数パラメータを渡す]{
+var config = {
+    apiKey: "ABCDEF",
+    authDomain: "example.firebaseapp.com",
+    databaseURL: "https://example.firebaseio.com",
+    projectId: "example",
+    storageBucket: "example.appspot.com",
+    messagingSenderId: "123456"
+};
+firebase.initializeApp(config);
+//}
+
 === 関数（function）
 
-JavaScriptでは関数（＝プログラム）もデータとして変数にいれることができます。詳しくはxx節で説明します。
+JavaScriptでは関数（＝プログラム）もデータとして変数にいれることができます。詳しくは@<hd>{関数}で説明します。
 
 //emlist{
 var f = function(x) {

@@ -28,7 +28,7 @@ HTMLは文書を木構造で表現します。構造に登場するものを要�
 //image[html_structure][HTMLは木構造]{
 //}
 
-この構造を表現するため、HTMLでは<ではじまり>で終わる「タグ」を使用します。<>内には要素名を記述します。
+この構造を表現するため、HTMLでは「<」ではじまり「>」で終わる「タグ」を使用します。<>内には要素名を記述します。
 
 タグには次の2種類があります。
 
@@ -43,13 +43,21 @@ HTMLは文書を木構造で表現します。構造に登場するものを要�
 
 === 練習問題
 
-次のタグは何を表しているか答えよ。例：<p>は、p要素の開始を表します。
+1 次のタグは開始タグと終了タグのどちらか？
 
  1. <link>
  2. </section>
  3. <code>
  4. <li>
  5. </select>
+
+2 次のタグの要素名を答えよ
+
+ 1. <title>
+ 2. <head>
+ 3. <meta>
+ 4. <ol>
+ 5. <div>
 
 == 属性
 
@@ -98,7 +106,22 @@ head要素はHTML文書に関する情報を記述するための要素です。
 
 === title
 
-title要素はHTML文書のタイトルを指定する要素です。ブラウザでは図xxのようにウィンドウのタイトルとして表示されます。
+title要素はHTML文書のタイトルを指定する要素です。head要素の子要素として指定します。@<list>{title}は文書タイトルとして「HTML基礎」を指定した例です。ブラウザでは@<img>{title}のようにウィンドウのタイトルとして表示されます。
+
+//list[title][title要素でタイトルを指定する]{
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HTML基礎</title>
+  </head>
+  <body>
+    <h1>1章</h1>
+  </body>
+</html>
+//}
+
+//image[title][title要素の値はタブに表示される]{
+//}
 
 === meta
 
@@ -160,6 +183,18 @@ h1〜h6要素は見出しを表す要素です。数値で見出しの段階を�
 === p
 
 p要素は段落を表す要素です。文章はこのp要素の内容として記述することが多いでしょう。
+
+//list[p_elem][p要素]{
+<html>
+  <head>
+    <!-- 中略 -->
+  </head>
+  <body>
+    <p>吾輩わがはいは猫である。名前はまだ無い。</p>
+    <p>どこで生れたかとんと見当けんとうがつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。</p>
+  </body>
+</body>
+//}
 
 === ul/olとli
 
@@ -235,6 +270,27 @@ public class Main {
 //image[pre2][pre要素で表示した例]{
 //}
 
+=== br
+
+br要素はp要素の中などで改行する際に使用します。終了タグなしで使用する点に注意しましょう。
+
+//list[br][brによる改行]{
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>brによる改行</title>
+  </head>
+  <body>
+    <p>「山賊王に、オレはなる！」<br>と、彼はみかん箱の上で叫んでいた</p>
+  </body>
+</html>
+//}
+
+@<list>{br}をブラウザで表示させたものが@<img>{br}です。brの位置で改行されていることがわかります。
+
+//image[br][ブラウザではbrで改行されている]{
+//}
+
 === div
 
 div要素は汎用のブロック要素です。@<chapref>{css}で説明するCSSによるスタイルを行うために使用します。
@@ -268,6 +324,42 @@ img要素は画像を表示するための要素です。どの画像を表示�
     <img src="./moke.png" alt="モケラの画像">
   </body>
 </html>
+//}
+
+=== input
+
+input要素はデータの入力に関する要素です。type属性で入力欄の種類を指定します。@<table>{inputtype}に代表的な値を示します。
+
+//table[inputtype][typeに指定可能な値]{
+値	説明
+--------------
+text	1行のテキスト入力欄
+password	パスワード入力欄
+checkbox	チェックボックス
+number	数値入力欄
+date	日付入力欄
+//}
+
+@<list>{input1}はさまざまな入力欄を配置してみた例です。ブラウザで表示すると@<img>{input1}のように表示されます。
+
+//list[input1][さまざまな入力欄]{
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>input要素</title>
+  </head>
+  <body>
+    <div>
+      <input type="text" placeholder="テキスト入力欄"><br>
+      <input type="password" placeholder="パスワード"><br>
+      <input type="checkbox">パスワードを保存する<br>
+      <input type="date" placeholder="生年月日"><br>
+    </div>
+  </body>
+</html>
+//}
+
+//image[input1][さまざまな入力欄]{
 //}
 
 == ブロック要素とインライン要素
